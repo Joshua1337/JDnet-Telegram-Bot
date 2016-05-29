@@ -26,12 +26,12 @@ networks.on('message', (evt, reply) => {
   log('Received message event: %o', evt)
 
   let hashtags = evt.text.match(/#([a-zA-Z]+)/)
-  hashtags && hashtags.length > 1
-
+  
+  if (hashtags && hashtags.length > 1) {
   reply({
     type: 'sendVoice',
     action: 'record_audio',
     id: evt.channel,
     voice: fs.createReadStream(path.join(__dirname, `voice/${hashtags[1]}.mp3`))
-  })
+  })}
 })
