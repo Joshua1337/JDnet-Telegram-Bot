@@ -18,7 +18,16 @@ networks.on('command', (evt, reply) => {
   switch (evt.cmd) {
     case 'say':
       reply(message(evt.channel, evt.args.join('')))
-      break;
+    break
+    case 'maxi':
+      let maxi = Math.floor((Math.random() * 12) + 1)
+      reply({
+        type: 'sendPhoto',
+        action: 'upload_photo',
+        id: evt.channel,
+        photo: fs.createReadStream(path.join(__dirname, `pic/${maxi}.jpg`))
+      })
+    break
   }
 })
 
