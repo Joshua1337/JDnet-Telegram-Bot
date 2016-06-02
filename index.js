@@ -44,3 +44,28 @@ networks.on('message', (evt, reply) => {
     voice: fs.createReadStream(path.join(__dirname, `voice/${hashtags[1]}.mp3`))
   })}
 })
+
+networks.on('message', (evt, reply) => {
+  let video = evt.text.match(/#([a-zA-Z]+)/)
+
+  if (video && video.length > 1) {
+  reply({
+    type: 'sendVideo',
+    action: 'record_video',
+    id: evt.channel,
+    video: fs.createReadStream(path.join(__dirname, `video/${video[1]}.mp4`))
+  })}
+})
+
+networks.on('message', (evt, reply) => {
+
+  let pic = evt.text.match(/#([a-zA-Z]+)/)
+
+  if (pic && pic.length > 1) {
+  reply({
+    type: 'sendPhoto',
+    action: 'upload_photo',
+    id: evt.channel,
+    photo: fs.createReadStream(path.join(__dirname, `pic/etc/${pic[1]}.jpg`))
+  })}
+})
