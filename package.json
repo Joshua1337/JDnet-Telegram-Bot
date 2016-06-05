@@ -1,0 +1,55 @@
+{
+  "name": "JoshsHashtag Bot",
+  "version": "1.0.0beta2",
+  "description": "",
+  "bin": {
+    "bot": "build/index.js"
+  },
+  "scripts": {
+    "start": "npm run start:prod",
+    "start:dev": "cross-env NODE_ENV=development DEBUG=bot:* babel-node src/index.js",
+    "start:prod": "npm run prepublish && cross-env NODE_ENV=production DEBUG=bot:*,-*debug,-*log node build/index.js",
+    "watch": "cross-env NODE_ENV=development DEBUG=bot:* babel-watch -w src src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rimraf build",
+    "compile": "babel --presets es2015 -d build/ src/",
+    "prepublish": "npm run clean && npm run compile"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Joshua1337/JDnet-Telegram-Bot/jdnet-telegram-bot.git"
+  },
+  "keywords": [
+    "coffea",
+    "starter",
+    "kit",
+    "boilerplate",
+    "chat",
+    "bot",
+    "messaging",
+    "hashtags",
+    "telegram"
+  ],
+  "author": "Joshua Dehler <me@j0sh.de>",
+  "license": "GNU",
+  "bugs": {
+    "url": "https://github.com/Joshua1337/JDnet-Telegram-Bot/issues"
+  },
+  "homepage": "https://github.com/Joshua1337/JDnet-Telegram-Bot/#readme",
+  "devDependencies": {
+    "babel-cli": "^6.8.0",
+    "babel-core": "^6.5.1",
+    "babel-eslint": "^4.1.8",
+    "babel-plugin-transform-object-rest-spread": "^6.5.0",
+    "babel-preset-es2015": "^6.5.0",
+    "babel-register": "^6.5.2",
+    "babel-watch": "^2.0.2",
+    "cross-env": "^1.0.7",
+    "rimraf": "^2.5.2"
+  },
+  "dependencies": {
+    "coffea": "1.0.0-beta14",
+    "coffea-telegram": "^1.0.0-beta3",
+    "debug-dude": "^1.0.3"
+  }
+}
